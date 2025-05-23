@@ -7,8 +7,13 @@ let redisClient = null;
 const radisClient = async () => {
   if (redisClient) return redisClient; // If Redis client is already connected, return the instance
 
+  console.log('Redis URL:', process.env.REDIS_URL)
   redisClient = redis.createClient({
-    url: 'redis://127.0.0.1:6379',  // Default Redis URL
+    url: process.env.REDIS_URL, // Default Redis URL
+    socket: {
+    tls: true, // for Upstash
+    rejectUnauthorized: false,
+  }
   });
 
   redisClient.on('error', (err) => console.error('Redis Error:', err));
