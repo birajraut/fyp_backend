@@ -21,13 +21,17 @@ const app = express();
 app.use(express.json()); 
 app.use(express.urlencoded({ extended: true })); 
 
-const corsOptions = {
+// const corsOptions = {
+//   origin: ['http://localhost:5173', 'https://fyp-frontend-tkvh.vercel.app/'],
+//   methods: 'GET,POST,PUT,DELETE',
+//   credentials: true, 
+// };
+
+app.use(cors({
   origin: ['http://localhost:5173', 'https://fyp-frontend-tkvh.vercel.app/'],
   methods: 'GET,POST,PUT,DELETE',
-  credentials: true, 
-};
-
-app.use(cors()); 
+  credentials: true,
+})); 
 app.use(session({ secret: "secret", resave: false, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
