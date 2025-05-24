@@ -27,7 +27,7 @@ const corsOptions = {
   credentials: true, 
 };
 
-app.use(cors(corsOptions)); 
+app.use(cors()); 
 app.use(session({ secret: "secret", resave: false, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
