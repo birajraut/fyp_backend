@@ -22,7 +22,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true })); 
 
 const corsOptions = {
-  origin: 'http://localhost:5173',
+  origin: ['http://localhost:5173', 'https://fyp-frontend-tkvh.vercel.app/'],
   methods: 'GET,POST,PUT,DELETE',
   credentials: true, 
 };
