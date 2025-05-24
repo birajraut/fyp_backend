@@ -18,6 +18,14 @@ dotenv.config();
 const app = express();
 
 
+
+app.use(cors({
+  origin: ['http://localhost:5173', 'https://fyp-frontend-tkvh.vercel.app'],
+  methods: 'GET,POST,PUT,DELETE',
+  credentials: true,
+})); 
+
+
 app.use(express.json()); 
 app.use(express.urlencoded({ extended: true })); 
 
@@ -27,11 +35,6 @@ app.use(express.urlencoded({ extended: true }));
 //   credentials: true, 
 // };
 
-app.use(cors({
-  origin: ['http://localhost:5173', 'https://fyp-frontend-tkvh.vercel.app/'],
-  methods: 'GET,POST,PUT,DELETE',
-  credentials: true,
-})); 
 app.use(session({ secret: "secret", resave: false, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
